@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>Jev — визуальная раскадровка запуска</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">✳</span> JEV <span class="brand-light">/ LAUNCH FILM</span></a>
+    <span class="top-note">VISUAL STORYBOARD · SCENES & STATES</span>
+    <a class="top-link" href="video.mp4" target="_blank" rel="noopener">Открыть оригинал ↗</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow"><span class="dot"></span> ОРИГИНАЛЬНЫЙ РОЛИК · 02:56</div>
+      <h1>Запуск Jev.<br><em>Кадр за кадром.</em></h1>
+      <p>Одна сцена — одна строка. Сначала её видеоклип, затем ключевые состояния. Наведи на кадр, чтобы увидеть переход к следующему.</p>
+      <div class="hero-stats"><div><strong id="scene-count">—</strong><span>сцен</span></div><div><strong id="state-count">—</strong><span>ключевых состояний</span></div><div><strong>35</strong><span>отдельных клипов</span></div></div>
+    </section>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-title">НАВИГАЦИЯ</div>
+        <nav id="chapter-nav" aria-label="Разделы фильма"></nav>
+        <div class="sidebar-foot">Наведи на состояние — переход проиграется до следующего. Кликни — откроется крупно.<br><br>← → в просмотре: соседний кадр<br>Esc: закрыть</div>
+      </aside>
+      <div class="content">
+        <div class="controls"><div class="section-label">РАСКАДРОВКА <span id="row-count"></span><small>КЛИП → СОСТОЯНИЯ → ПЕРЕХОД ПО НАВЕДЕНИЮ</small></div><div class="control-right"><div class="view-switch" aria-label="Режим кадров"><button id="key-mode" class="selected" type="button">Состояния</button><button id="all-mode" type="button">Каждая секунда</button></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Найти сцену или таймкод…" aria-label="Поиск по сценам"></label></div></div>
+        <div id="scenes"></div>
+        <div id="empty" class="empty" hidden>Не нашлось сцен по этому запросу.</div>
+      </div>
+    </div>
+  </main>
+
+  <div id="viewer" class="viewer" role="dialog" aria-modal="true" aria-label="Просмотр кадра" hidden>
+    <div class="viewer-backdrop" data-close></div>
+    <div class="viewer-content">
+      <div class="viewer-toolbar"><div><span class="viewer-kicker">КАДР</span> <strong id="viewer-time"></strong> <span id="viewer-scene"></span></div><button class="icon-button" id="close" aria-label="Закрыть">×</button></div>
+      <div class="viewer-stage"><button class="arrow prev" id="prev" aria-label="Предыдущий кадр">‹</button><img id="viewer-image" alt="Кадр фильма"><video id="viewer-video" controls preload="none" hidden></video><button class="arrow next" id="next" aria-label="Следующий кадр">›</button></div>
+      <div class="viewer-bottom"><span id="viewer-position"></span><button id="toggle-video" class="pill">▶ Смотреть с этого момента</button></div>
+    </div>
+  </div>
+  <script src="keyframes-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
